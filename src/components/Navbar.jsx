@@ -23,12 +23,13 @@ import {
     Menu as MenuIcon,
     ChevronLeft as ChevronLeftIcon,
     ChevronRight as ChevronRightIcon,
-    Mail as MailIcon,
     PowerSettingsNew as PowerIcon,
     Home as HomeIcon,
     AccountCircle as ProfileIcon,
     VerifiedUser as SessionIcon,
-    Build as ChangePasswordIcon
+    Build as ChangePasswordIcon,
+    Contacts as UsersIcon,
+    Lock as RolesIcon
 } from '@material-ui/icons'
 
 import UserContext from '../context/UserContext'
@@ -167,13 +168,19 @@ const Navbar = props => {
                                 <Divider />
                                 <List>
                                     <ListItem>
-                                        <ListItemText secondary='Other' />
+                                        <ListItemText secondary='User Management' />
                                     </ListItem>
-                                    <ListItem component={NavLink} to="/mail" onClick={handleDrawerClose}>
+                                    <ListItem component={NavLink} to="/admin/users" onClick={handleDrawerClose} button>
                                         <ListItemIcon>
-                                            <MailIcon />
+                                            <UsersIcon />
                                         </ListItemIcon>
-                                        <ListItemText primary='Mail' />
+                                        <ListItemText primary='Users' />
+                                    </ListItem>
+                                    <ListItem component={NavLink} to="/admin/roles" onClick={handleDrawerClose} button>
+                                        <ListItemIcon>
+                                            <RolesIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary='Roles' />
                                     </ListItem>
                                 </List>
                             </>

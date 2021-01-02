@@ -32,8 +32,8 @@ const Profile = () => {
     const [email, setEmail] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
-    const [gender, setGender] = useState('')
     const [dateOfBirth, setDateOfBirth] = useState(dayjs(new Date()).format('YYYY-MM-DD'))
+    const [gender, setGender] = useState('')
     useEffect(() => {
         userContext
             .getProfile()
@@ -51,18 +51,18 @@ const Profile = () => {
     const handleEmailChange = e => setEmail(e.target.value)
     const handleFirstNameChange = e => setFirstName(e.target.value)
     const handleLastNameChange = e => setLastName(e.target.value)
-    const handleDateOfBirthChange = e => setDateOfBirth(e.target.value)
     const handleGenderChange = e => setGender(e.target.value)
+    const handleDateOfBirthChange = e => setDateOfBirth(e.target.value)
     const handleSubmit = async e => {
         e.preventDefault()
         const obj = {
             email: email.trim(),
             firstName: firstName.trim(),
             lastName: lastName.trim(),
-            dateOfBirth: new Date(dateOfBirth),
             gender: gender.trim(),
+            dateOfBirth: new Date(dateOfBirth)
         }
-        if (obj.email && obj.firstName && obj.lastName && obj.dateOfBirth && obj.gender) {
+        if (obj.email && obj.firstName && obj.lastName && obj.gender && obj.dateOfBirth) {
             const { token } = await userContext.getToken()
             if (token) {
                 try {
@@ -134,18 +134,6 @@ const Profile = () => {
                                         />
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
-                                        <TextField
-                                            required
-                                            id="dateOfBirth"
-                                            name="dateOfBirth"
-                                            label="Birthday"
-                                            fullWidth
-                                            type="date"
-                                            value={dateOfBirth}
-                                            onChange={handleDateOfBirthChange}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={6}>
                                         <InputLabel id="gender-label">Gender *</InputLabel>
                                         <Select
                                             labelId="gender-label"
@@ -160,6 +148,18 @@ const Profile = () => {
                                             <MenuItem value="female">Female</MenuItem>
                                             <MenuItem value="other">Other</MenuItem>
                                         </Select>
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            required
+                                            id="dateOfBirth"
+                                            name="dateOfBirth"
+                                            label="Birthday"
+                                            fullWidth
+                                            type="date"
+                                            value={dateOfBirth}
+                                            onChange={handleDateOfBirthChange}
+                                        />
                                     </Grid>
                                 </Grid>
                                 <br />

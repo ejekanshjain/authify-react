@@ -10,8 +10,10 @@ import Auth from './pages/Auth'
 import Profile from './pages/Profile'
 import Sessions from './pages/Sessions'
 import ChangePassword from './pages/ChangePassword'
-import BasicHome from './pages/Basic/Home'
 import AdminHome from './pages/Admin/Home'
+import Users from './pages/Admin/Users'
+import Roles from './pages/Admin/Roles'
+import BasicHome from './pages/Basic/Home'
 
 const defaultUser = {
     userId: '',
@@ -167,6 +169,8 @@ const App = () => {
                                             {user.userId && <Route path="/changePassword" component={ChangePassword} exact />}
                                             {/* User Role Admin */}
                                             {user.userId && user.role.name === 'admin' && <Route path="/admin/home" component={AdminHome} exact />}
+                                            {user.userId && user.role.name === 'admin' && <Route path="/admin/users" component={Users} exact />}
+                                            {user.userId && user.role.name === 'admin' && <Route path="/admin/roles" component={Roles} exact />}
                                             {/* Basic Role User */}
                                             {user.userId && user.role.name === 'basic' && <Route path="/home" component={BasicHome} exact />}
 

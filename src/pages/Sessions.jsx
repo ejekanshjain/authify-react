@@ -117,9 +117,25 @@ const Sessions = () => {
                                                         {i + 1}
                                                     </TableCell>
                                                     <TableCell>{dayjs(new Date(session.createdAt)).format('MMMM DD YYYY, h:mm:ss a')}</TableCell>
-                                                    <TableCell>{session.os.name + ' ' + session.os.version}</TableCell>
+                                                    <TableCell>
+                                                        {
+                                                            (session.os.name && session.os.version)
+                                                                ?
+                                                                session.os.name + ' ' + session.os.version
+                                                                :
+                                                                'Unknown'
+                                                        }
+                                                    </TableCell>
                                                     <TableCell>{session.device.model ? session.device.model : 'Unknown'}</TableCell>
-                                                    <TableCell>{session.browser.name + ' ' + session.browser.major}</TableCell>
+                                                    <TableCell>
+                                                        {
+                                                            (session.browser.name && session.browser.major)
+                                                                ?
+                                                                session.browser.name + ' ' + session.browser.major
+                                                                :
+                                                                'Unknown'
+                                                        }
+                                                    </TableCell>
                                                     <TableCell>
                                                         {
                                                             session.isCurrent
